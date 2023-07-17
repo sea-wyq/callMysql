@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "app.Labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "app.Labels" . | nindent 8 }}
+    spec:
+      containers:
+      - name: app-container
+        image: {{.Values.image.App_image}}
+        ports:
+        - containerPort: 8000 ## 在Pod的容器规范中定义的，用于指定容器将监听的端口号

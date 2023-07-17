@@ -1,0 +1,22 @@
+# Default values for app-helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  App_image: registry.cn-hangzhou.aliyuncs.com/sea-wyq/demo:1.2.6
+
+  MYSQL_image: mysql:5.7
+
+
+service:
+  type: ClusterIP
+  port: 80
+
+mysql:
+  password: root
+  database: demo
+
+
+# helm升级指令： helm upgrade app ./app-helm/ -f ./app-helm/values.yaml

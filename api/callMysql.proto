@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package callMysql;
+
+import "google/api/annotations.proto";
+
+option go_package = "callMysql/api;api";
+option java_multiple_files = true;
+option java_package = "api";
+
+service Greeter {
+  rpc GetMysqlMess (CallRequest) returns (CallReply) {
+    option (google.api.http) = {
+      get: "/data/{id}"
+    };
+  }
+}
+
+message CallRequest {
+  string id = 1;
+}
+
+message CallReply {
+  string message = 1;
+} 
+
+// make api 生成pb文件

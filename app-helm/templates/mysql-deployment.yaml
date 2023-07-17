@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "mysql.Labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "mysql.Labels" . | nindent 8 }}
+    spec:
+      volumes:
+        - name: mysql-data
+          configMap:
+            name: mysql-data
+      containers:
+        - name: mysql-container
+          image: {{.Values.image.MYSQL_image}}
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: {{ .Values.mysql.password}}
+            - name: MYSQL_DATABASE
+              value: {{ .Values.mysql.database}}
+          volumeMounts:
+              - name: mysql-data
+                mountPath: /docker-entrypoint-initdb.d
+

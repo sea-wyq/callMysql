@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-data
+data:
+  employees.sql: |
+    USE demo;
+    CREATE TABLE test(id int(11),name varchar(50)); 
+    INSERT INTO test(id,name) VALUES(1,"wyq");
+    INSERT INTO test(id,name) VALUES(2,"wl");
