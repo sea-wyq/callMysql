@@ -36,6 +36,7 @@ func NewDataControllerUsecase(repo DataController, logger log.Logger) *DataContr
 // CreateGreeter creates a Greeter, and returns the new Greeter.
 func (uc *DataControllerUsecase) CreateMess(ctx context.Context, id int64) (*Mess, error) {
 	me, err := uc.repo.FindByID(ctx, id)
+	uc.log.Info("select data success...")
 	return me, err
 	// return &Mess{Info: "wyq"}, nil
 }

@@ -2,5 +2,5 @@
     升级helm: helm upgrade app ./app-helm/ -f ./app-helm/values.yaml
     查看服务端日志: kubectl logs pod/服务pod
 
-    测试指令: curl http://192.168.49.2:32628/data/2
+    测试指令: curl http://127.0.0.1:32628/data/2
 

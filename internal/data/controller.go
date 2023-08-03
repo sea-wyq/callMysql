@@ -20,6 +20,7 @@ func NewMysqlController(data *Data, logger log.Logger) biz.DataController {
 		data: data,
 		log:  log.NewHelper(logger),
 	}
+
 }
 
 func (r *MysqlController) FindByID(ctx context.Context, num int64) (*biz.Mess, error) {

@@ -8,5 +8,6 @@ server:
 data:
   database:
     driver: mysql
-    source: root:root@tcp(mysql-service:3306)/demo
+    # source: root:root@tcp(mysql-service:3306)/demo  deployment资源访问模式
+    source: root:root@tcp(mysql-service.default.svc.cluster.local:3306)/demo 
 

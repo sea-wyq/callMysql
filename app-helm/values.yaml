@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  App_image: registry.cn-hangzhou.aliyuncs.com/sea-wyq/demo:1.2.6
+  App_image: seawyq/callmysql:1.1.1
 
   MYSQL_image: mysql:5.7
 

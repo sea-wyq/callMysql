@@ -1,7 +1,13 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: mysql-deployment
+  name: mysql-statefulset
+  labels:
+    app.kubernetes.io/name: mysql
+    app.kubernetes.io/version: "5.7"
+    app.kubernetes.io/managed-by: helm
+    app.kubernetes.io/component: database
+    app.kubernetes.io/part-of: callmysql
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -29,4 +35,6 @@ spec:
           volumeMounts:
               - name: mysql-data
                 mountPath: /docker-entrypoint-initdb.d
+
+          
 
